@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+      text-align: center;
+      overflow: hidden;
+      color: white;
+    }
+
+    .box {
+      position: relative;
+      top: 70px;
+      background: rgba(255,255,255,0.25);
+      padding: 20px;
+      border-radius: 20px;
+      display: inline-block;
+      width: 88%;
+      max-width: 350px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(255, 20, 147, 0.4);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 15px;
+      background: #ff1493;
+      color: white;
+      font-size: 18px;
+      margin-top: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+    }
+
+    #msg {
+      display: none;
+      margin-top: 15px;
+      font-size: 16px;
+      line-height: 1.5;
+      animation: fadeIn 1s ease;
+    }
+
+    #surpriseBtn {
+      display: none;
+    }
+
+    #gift {
+      display: none;
+      font-size: 70px;
+      margin-top: 15px;
+      animation: pop 0.5s ease;
+    }
+
+    @keyframes pop {
+      from {transform: scale(0);}
+      to {transform: scale(1);}
+    }
+
+    /* FLOATING HEARTS */
+    .heart {
+      position: absolute;
+      color: #ff1a75;
+      font-size: 18px;
+      animation: fall 6s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {transform: translateY(-10%); opacity: 1;}
+      100% {transform: translateY(110vh); opacity: 0;}
+    }
+
+    /* SPARKLES */
+    .sparkle {
+      position: absolute;
+      color: white;
+      font-size: 12px;
+      animation: sparkleAnim 3s linear infinite;
+    }
+
+    @keyframes sparkleAnim {
+      0% {opacity: 0; transform: scale(0);}
+      50% {opacity: 1;}
+      100% {opacity: 0; transform: scale(1.5) translateY(-50px);}
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Hey 💖</h2>
+
+  <p>I made this just for you 💕</p>
+
+  <button onclick="showMsg()">Tap me</button>
+
+  <div id="msg">
+    Sorry napo 🥺<br><br>
+
+    I just want to be honest with you about how I feel…<br><br>
+
+    Mahal na mahal kita.<br><br>
+
+    I really, really love you.<br><br>
+
+    My feelings for you are real and deep.<br><br>
+
+    You make my days feel lighter just by existing.<br><br>
+
+    Minsan I catch myself smiling for no reason… and it’s always because of you.<br><br>
+
+    I didn’t plan this, but somehow you became very important to me.<br><br>
+
+    Mahal na mahal kita… and I hope you feel how real this is 💖
+  </div>
+
+  <br>
+
+  <button id="surpriseBtn" onclick="showGift()">Click for surprise 💐</button>
+
+  <div id="gift">💐💐💐</div>
+</div>
+
+<script>
+/* HEARTS */
+function heart() {
+  const h = document.createElement("div");
+  h.classList.add("heart");
+  h.innerHTML = "💖";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}
+setInterval(heart, 250);
+
+/* SPARKLES */
+function sparkle() {
+  const s = document.createElement("div");
+  s.classList.add("sparkle");
+  s.innerHTML = "✨";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+  s.style.animationDuration = (Math.random() * 2 + 2) + "s";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 3000);
+}
+setInterval(sparkle, 400);
+
+/* MESSAGE */
+function showMsg() {
+  document.getElementById("msg").style.display = "block";
+
+  setTimeout(() => {
+    document.getElementById("surpriseBtn").style.display = "inline-block";
+  }, 8000);
+}
+
+/* SURPRISE */
+function showGift() {
+  document.getElementById("gift").style.display = "block";
+}
+</script>
+
+</body>
+</html>
